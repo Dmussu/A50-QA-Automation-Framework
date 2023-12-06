@@ -20,3 +20,15 @@ test {
         suites "src/test/resources/TestNG.xml"
     }
 }
+
+test smokeTest {
+    useTestNG() {
+        suites "src/test/resources/Smoke.xml"
+    }
+}
+
+test regressionTest {
+    useTestNG() {
+        suites "src/test/resources/Regression.xml"
+    }
+}

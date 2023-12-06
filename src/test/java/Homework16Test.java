@@ -10,24 +10,16 @@ import java.time.Duration;
 
 public class Homework16Test extends BaseTest {
 
-    @Test
+    @Test(testName = "Registration Navigation Test", groups = {"Smoke", "Regression"})
     public void testRegistrationNavigation() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
 
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-        String url = "https://qa.koel.app/";
-        driver.get(url);
-
-        WebElement registrationLink = driver.findElement(By.xpath("//form[@data-testid='login-form']//a[contains(@href,'registration')]"));
+        WebElement registrationLink = getDriver().findElement(By.xpath("//form[@data-testid='login-form']//a[contains(@href,'registration')]"));
         registrationLink.click();
 
-        WebElement submitButton = driver.findElement(By.xpath("//input[@id='button']"));
+        WebElement submitButton = getDriver().findElement(By.xpath("//input[@id='button']"));
 
         Assert.assertTrue(submitButton.isDisplayed());
-        driver.quit();
+
 
     }
 }
