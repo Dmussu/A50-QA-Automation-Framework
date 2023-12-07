@@ -21,14 +21,14 @@ test {
     }
 }
 
-test smokeTest {
+task smokeTest(type: Test) {
     useTestNG() {
-        suites "src/test/resources/Smoke.xml"
+        suites 'src/test/resources/Smoke.xml'
     }
 }
 
-test regressionTest {
+task regressionTest(type: Test) {
     useTestNG() {
-        suites "src/test/resources/Regression.xml"
+        suites 'src/test/resources/Regression.xml'
     }
 }
