@@ -1,19 +1,14 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
 
 public class Homework17Test extends BaseTest {
 
     public static final String PLAY_LIST_NAME = "HW17";
     public static final String SONG_NAME = "M33 Project - Emotional Soundtrack";
 
-    @Test(testName = "Create user playlist and add song to the playlist test", groups = {"Smoke","Regression"})
+    @Test(testName = "Create user playlist and add song to the playlist test", groups = {"Smoke", "Regression"})
     public void addSongToPlaylistTest() throws InterruptedException {
 
         enterEmail("darina.mussulmanova@testpro.io");
@@ -45,14 +40,13 @@ public class Homework17Test extends BaseTest {
         WebElement addSongToThePlaylist = driver.findElement(By.xpath("//li[@class='playlist' and contains(text(), '" + PLAY_LIST_NAME + "')]\n"));
         addSongToThePlaylist.click();
 
-        WebElement playlists =driver.findElement(By.xpath("//*[@id=\"playlists\"]"));
+        WebElement playlists = driver.findElement(By.xpath("//*[@id=\"playlists\"]"));
         WebElement playlist = playlists.findElement(By.linkText(PLAY_LIST_NAME));
         playlist.click();
 
         WebElement addedSong = driver.findElement(By.xpath("//*[@id=\"playlistWrapper\"]//td[@class='title']"));
 
         Assert.assertEquals(addedSong.getText(), SONG_NAME);
-
-
     }
 }
+

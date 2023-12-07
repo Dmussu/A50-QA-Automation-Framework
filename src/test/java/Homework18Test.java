@@ -1,14 +1,8 @@
-import net.bytebuddy.asm.Advice;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import javax.swing.*;
-import java.time.Duration;
 
 public class Homework18Test extends BaseTest {
 
@@ -32,10 +26,5 @@ public class Homework18Test extends BaseTest {
         WebElement songIsPlaying = driver.findElement(By.cssSelector("[data-testid='sound-bar-play']"));
 
         Assert.assertTrue(songIsPlaying.isDisplayed());
-
-
-
-
     }
-
 }
