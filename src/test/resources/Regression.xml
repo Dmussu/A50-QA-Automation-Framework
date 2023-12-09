@@ -6,6 +6,7 @@
         <classes>
             <class name="Homework16Test"/>
             <class name="Homework17Test"/>
+            <class name="Homework18Test"/>
             <class name="LoginTests">
                 <methods>
                     <include name="loginEmptyEmailPassword"/>
