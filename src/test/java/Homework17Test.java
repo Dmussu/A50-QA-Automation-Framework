@@ -1,7 +1,11 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.time.Duration;
 
 public class Homework17Test extends BaseTest {
 
@@ -15,7 +19,8 @@ public class Homework17Test extends BaseTest {
         enterPassword("Darinam9!!");
         clickLoginButton();
 
-        Thread.sleep(1000);
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//i[@data-testid='sidebar-create-playlist-btn']")));
 
         WebElement createNewPlaylistButton = driver.findElement(By.xpath("//i[@data-testid='sidebar-create-playlist-btn']"));
         createNewPlaylistButton.click();
