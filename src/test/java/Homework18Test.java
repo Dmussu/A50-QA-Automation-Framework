@@ -10,10 +10,8 @@ public class Homework18Test extends BaseTest {
 
     @Test(testName = "Play Song Test and validate that the song is playing", groups = {"Smoke","Regression"})
     public void playSong() {
-        enterEmail("darina.mussulmanova@testpro.io");
-        enterPassword("Darinam9!!");
-        clickLoginButton();
 
+        loginKoel("darina.mussulmanova@testpro.io","Darinam9!!");
         WebElement allSongsClick = driver.findElement(By.xpath("//ul[@class='menu']//a[contains(@class,'songs')]"));
         allSongsClick.click();
         allSongsClick.click();
