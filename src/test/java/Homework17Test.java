@@ -15,9 +15,7 @@ public class Homework17Test extends BaseTest {
     @Test(testName = "Create user playlist and add song to the playlist test", groups = {"Smoke", "Regression"})
     public void addSongToPlaylistTest() throws InterruptedException {
 
-        enterEmail("darina.mussulmanova@testpro.io");
-        enterPassword("Darinam9!!");
-        clickLoginButton();
+        loginKoel("darina.mussulmanova@testpro.io","Darinam9!!");
 
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//i[@data-testid='sidebar-create-playlist-btn']")));

@@ -11,12 +11,8 @@ public class LoginTests extends BaseTest {
 
     @Test(testName = "Login with valid credentials", groups = "Smoke")
     public void loginUserTest (){
-        enterEmail("darina.mussulmanova@testpro.io");
-        enterPassword("Darinam9!!");
-        clickLoginButton();
-
+        loginKoel("darina.mussulmanova@testpro.io","Darinam9!!");
         WebElement logoutButton = getDriver().findElement(By.xpath("//span[@id=\"userBadge\"]//i[@class='fa fa-sign-out']"));
-
         Assert.assertTrue(logoutButton.isDisplayed());
     }
 }

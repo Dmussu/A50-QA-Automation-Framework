@@ -48,16 +48,24 @@ public class BaseTest {
 
     public void enterEmail (String email ){
         WebElement emailField = getDriver().findElement(By.xpath("//input[@type='email']"));
+        emailField.clear();
         emailField.sendKeys(email);
     }
 
     public void enterPassword (String password){
         WebElement passwordField = getDriver().findElement(By.xpath("//input[@type='password']"));
+        passwordField.clear();
         passwordField.sendKeys(password);
     }
 
     public void clickLoginButton (){
         WebElement loginButton = getDriver().findElement(By.xpath("//button[@type='submit']"));
         loginButton.click();
+    }
+
+    public void loginKoel (String email, String password){
+        enterEmail(email);
+        enterPassword(password);
+        clickLoginButton();
     }
 }
