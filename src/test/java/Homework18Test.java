@@ -12,16 +12,16 @@ public class Homework18Test extends BaseTest {
     public void playSong() {
 
         loginKoel("darina.mussulmanova@testpro.io","Darinam9!!");
-        WebElement allSongsClick = driver.findElement(By.xpath("//ul[@class='menu']//a[contains(@class,'songs')]"));
+        WebElement allSongsClick = getDriver().findElement(By.xpath("//ul[@class='menu']//a[contains(@class,'songs')]"));
         allSongsClick.click();
         allSongsClick.click();
 
-        WebElement selectSong = driver.findElement(By.xpath("//table[@class='items']//td[contains(text(),'" + SONG_NAME + "')]"));
+        WebElement selectSong = getDriver().findElement(By.xpath("//table[@class='items']//td[contains(text(),'" + SONG_NAME + "')]"));
 
         Actions actions = new Actions(getDriver());
         actions.doubleClick(selectSong).build().perform();
 
-        WebElement songIsPlaying = driver.findElement(By.cssSelector("[data-testid='sound-bar-play']"));
+        WebElement songIsPlaying = getDriver().findElement(By.cssSelector("[data-testid='sound-bar-play']"));
 
         Assert.assertTrue(songIsPlaying.isDisplayed());
     }
