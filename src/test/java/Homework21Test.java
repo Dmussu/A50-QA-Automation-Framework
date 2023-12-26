@@ -11,29 +11,30 @@ import java.time.Duration;
 public class Homework21Test extends BaseTest {
 
     @Test
-    public void renamePlaylistTest () throws InterruptedException {
-        loginKoel("darina.mussulmanova@testpro.io","Darinam9!!");
+    public void renamePlaylistTest() throws InterruptedException {
+        loginKoel("darina.mussulmanova@testpro.io", "Darinam9!!");
 
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(20));
-        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//li[@class='playlist playlist']//a[contains(text(),'HW17')]")));
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//li[contains(@class, 'playlist')]//a[contains(text(),'HW17')]")));
 
-        WebElement rightClickOnSelectedPlaylist = getDriver().findElement(By.xpath("//li[@class='playlist playlist']//a[contains(text(),'HW17')]"));
+        WebElement rightClickOnSelectedPlaylist = getDriver().findElement(By.xpath("//li[contains(@class, 'playlist')]//a[contains(text(),'HW17')]"));
         Actions actions = new Actions(getDriver());
-        actions.contextClick(rightClickOnSelectedPlaylist).build().perform();
+        actions.contextClick(rightClickOnSelectedPlaylist).perform();
 
-        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//li[contains(text(), 'Edit')]")));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[contains(text(), 'Edit')]")));
 
         WebElement editButtonClick = getDriver().findElement(By.xpath("//li[contains(text(), 'Edit')]"));
-        Thread.sleep(1000);
         editButtonClick.click();
 
         WebElement playListNameInputField = getDriver().findElement(By.xpath("//input[@name='name']"));
         actions.moveToElement(playListNameInputField);
 
-        for (int i = 0; i < playListNameInputField.getAttribute("value").length(); i++) {
-            actions.sendKeys(Keys.BACK_SPACE).perform();
-        }
-        playListNameInputField.sendKeys("HW21");
-        actions.sendKeys(Keys.ENTER).perform();
+        actions.moveToElement(playListNameInputField)
+                .doubleClick().perform();
+        actions.moveToElement(playListNameInputField)
+                .sendKeys(Keys.DELETE)
+                .sendKeys("HW21")
+                .sendKeys(Keys.ENTER)
+                .build().perform();
     }
 }
