@@ -12,6 +12,7 @@
             <class name="BaseTest"/>
             <class name="Homework18Test"/>
             <class name="Homework19Test"/>
+            <class name="Homework21Test"/>
         </classes>
     </test>
 </suite>

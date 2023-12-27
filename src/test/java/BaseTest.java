@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -13,28 +15,30 @@ import java.time.Duration;
 
 public class BaseTest {
 
-    WebDriver driver = null;
-    String url = "https://qa.koel.app/";
+   private WebDriver driver = null; // after running line 35
+   protected String url = "https://qa.koel.app/";
 
-//    public static final String URL = "https://qa.koel.app/";
-//    public static final String EMAIL = "darina.mussulmanova@testpro.io";
-//    public static final String PASSWORD = "Darinam9!!";
+   WebDriverWait explicitWait = null;
+
+   Actions actions = null;
 
     @BeforeSuite
     static void setupClass() {
         WebDriverManager.chromedriver().setup();
     }
-    @BeforeMethod
+
+    @BeforeMethod //setup Driver
     @Parameters({"BaseURL"})
-    public void launchBrowser (String BaseURL) {
-   // public void setupDriver() {
+    public void setupDriver (String BaseURL) {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
-
         driver = new ChromeDriver(options);
+
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().fullscreen();
-        driver.get(url);
+        driver.get(url); // open page
+        explicitWait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        actions = new Actions(driver);
     }
 
     public WebDriver getDriver(){
