@@ -6,13 +6,13 @@
     <test name="Example Test" preserve-order="false">
         <parameter name="BaseURL" value="https://qa.koel.app/"/>
         <classes>
-            <class name="LoginTests"/>
-            <class name="Homework16Test"/>
-            <class name="Homework17Test"/>
-            <class name="BaseTest"/>
-            <class name="Homework18Test"/>
-            <class name="Homework19Test"/>
-            <class name="Homework21Test"/>
+            <class name="com.qa.koel.LoginTests"/>
+            <class name="com.qa.koel.Homework16Test"/>
+            <class name="com.qa.koel.Homework17Test"/>
+            <class name="com.qa.koel.BaseTest"/>
+            <class name="com.qa.koel.Homework18Test"/>
+            <class name="com.qa.koel.Homework19Test"/>
+            <class name="com.qa.koel.Homework21Test"/>
         </classes>
     </test>
 </suite>
