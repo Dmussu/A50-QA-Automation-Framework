@@ -19,6 +19,8 @@ public class Homework21Test extends BaseTest {
     public void renamePlaylistTest() throws InterruptedException {
 
         loginPage = new LoginPage(getDriver());
+        playlistPage = new PlaylistPage(getDriver());
+
         loginPage.loginKoel("darina.mussulmanova@testpro.io", "Darinam9!!");
 
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(20));
@@ -34,7 +36,6 @@ public class Homework21Test extends BaseTest {
 
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[contains(text(), 'Edit')]")));
 
-        playlistPage = new PlaylistPage(getDriver());
         playlistPage.getEditButtonClick().click();
 
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[name='name']")));

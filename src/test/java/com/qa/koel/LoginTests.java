@@ -14,8 +14,9 @@ public class LoginTests extends BaseTest {
     @Test(testName = "Login with valid credentials", groups = "Smoke")
     public void loginUserTest (){
         loginPage = new LoginPage(getDriver());
-        loginPage.loginKoel("darina.mussulmanova@testpro.io","Darinam9!!");
         homePage = new HomePage(getDriver());
+        loginPage.loginKoel("darina.mussulmanova@testpro.io","Darinam9!!");
+
         Assert.assertTrue(homePage.getLogoutButton().isDisplayed());
     }
 }

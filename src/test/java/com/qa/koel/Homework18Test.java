@@ -16,9 +16,9 @@ public class Homework18Test extends BaseTest {
     public void playSong() {
 
         loginPage = new LoginPage(getDriver());
+        allSongsPage = new AllSongsPage(getDriver());
         loginPage.loginKoel("darina.mussulmanova@testpro.io", "Darinam9!!");
 
-        allSongsPage = new AllSongsPage(getDriver());
         allSongsPage.getAllSongsClick();
         allSongsPage.getAllSongsClick().click();
         allSongsPage.getAllSongsClick().click();

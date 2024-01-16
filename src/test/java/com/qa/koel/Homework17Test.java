@@ -19,11 +19,13 @@ public class Homework17Test extends BaseTest {
     @Test(testName = "Create user playlist and add song to the playlist test", groups = {"Smoke", "Regression"})
     public void addSongToPlaylistTest() throws InterruptedException {
         loginPage = new LoginPage(getDriver());
+        homePage = new HomePage(getDriver());
+        allSongsPage = new AllSongsPage(getDriver());
+
         loginPage.loginKoel("darina.mussulmanova@testpro.io", "Darinam9!!");
 
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//i[@data-testid='sidebar-create-playlist-btn']")));
-        homePage = new HomePage(getDriver());
         homePage.getCreateNewPlaylistButton().click();
         homePage.getNewPlaylistButtonField().click();
 
@@ -31,7 +33,6 @@ public class Homework17Test extends BaseTest {
         homePage.getNewPlaylistName().sendKeys(PLAY_LIST_NAME);
         homePage.getNewPlaylistName().submit();
 
-        allSongsPage = new AllSongsPage(getDriver());
         allSongsPage.getAllSongsClick();
         allSongsPage.getAllSongsClick().click();
         allSongsPage.getAllSongsClick().click();
