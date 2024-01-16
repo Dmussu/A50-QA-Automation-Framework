@@ -3,6 +3,7 @@
 
 <suite name="Regression">
     <test name="Regression Test" preserve-order="false">
+        <parameter name="BaseURL" value="https://qa.koel.app/"/>
         <classes>
             <class name="com.qa.koel.Homework16Test"/>
             <class name="com.qa.koel.Homework17Test"/>
