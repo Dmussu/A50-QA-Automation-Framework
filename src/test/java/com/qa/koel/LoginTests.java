@@ -1,9 +1,11 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+package com.qa.koel;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LoginTests extends BaseTest {
+
+    LoginPage loginPage; // driver = null
+    HomePage homePage;
     @Test(testName = "Login with Empty Email and Password", groups = "Regression")
     public void loginEmptyEmailPassword() {
         Assert.assertEquals(getDriver().getCurrentUrl(), url);
@@ -11,8 +13,10 @@ public class LoginTests extends BaseTest {
 
     @Test(testName = "Login with valid credentials", groups = "Smoke")
     public void loginUserTest (){
-        loginKoel("darina.mussulmanova@testpro.io","Darinam9!!");
-        WebElement logoutButton = getDriver().findElement(By.xpath("//span[@id=\"userBadge\"]//i[@class='fa fa-sign-out']"));
-        Assert.assertTrue(logoutButton.isDisplayed());
+        loginPage = new LoginPage(getDriver());
+        homePage = new HomePage(getDriver());
+        loginPage.loginKoel("darina.mussulmanova@testpro.io","Darinam9!!");
+
+        Assert.assertTrue(homePage.getLogoutButton().isDisplayed());
     }
 }

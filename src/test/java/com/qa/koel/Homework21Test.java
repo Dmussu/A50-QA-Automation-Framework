@@ -1,3 +1,5 @@
+package com.qa.koel;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -10,10 +12,16 @@ import java.time.Duration;
 import java.util.List;
 
 public class Homework21Test extends BaseTest {
+    LoginPage loginPage;
+    PlaylistPage playlistPage;
 
     @Test
     public void renamePlaylistTest() throws InterruptedException {
-        loginKoel("darina.mussulmanova@testpro.io", "Darinam9!!");
+
+        loginPage = new LoginPage(getDriver());
+        playlistPage = new PlaylistPage(getDriver());
+
+        loginPage.loginKoel("darina.mussulmanova@testpro.io", "Darinam9!!");
 
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(20));
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//li[contains(@class, 'playlist')]//a[contains(text(),'HW17')]")));
@@ -28,15 +36,14 @@ public class Homework21Test extends BaseTest {
 
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[contains(text(), 'Edit')]")));
 
-        WebElement editButtonClick = getDriver().findElement(By.xpath("//li[contains(text(), 'Edit')]"));
-        editButtonClick.click();
+        playlistPage.getEditButtonClick().click();
 
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[name='name']")));
-        WebElement playListNameInputField = getDriver().findElement(By.cssSelector("[name='name']"));
+        playlistPage.getPlayListNameInputField();
 
-        actions.moveToElement(playListNameInputField)
+        actions.moveToElement(playlistPage.getPlayListNameInputField())
                 .doubleClick().perform();
-        actions.moveToElement(playListNameInputField)
+        actions.moveToElement(playlistPage.getPlayListNameInputField())
                 .sendKeys(Keys.COMMAND, "a")
                 .sendKeys(Keys.DELETE)
                 .sendKeys("HW21")
